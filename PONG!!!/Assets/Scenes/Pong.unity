@@ -489,6 +489,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   mainCamera: {fileID: 963194227}
+  miny: 0
+  maxy: 0
 --- !u!4 &588922026 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1037876625743895289, guid: 55f16de4177767e4c9164e7bd0777ebf, type: 3}
@@ -804,7 +806,7 @@ GameObject:
   - component: {fileID: 964409705}
   m_Layer: 0
   m_Name: Padels
-  m_TagString: Untagged
+  m_TagString: Paddle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -870,7 +872,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1020399808}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.1
   m_Drag: 0
   m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -888,7 +890,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!135 &1020399811
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -896,7 +898,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1020399808}
-  m_Material: {fileID: 13400000, guid: cfc68ca7809e4e14f858de15082ad853, type: 2}
+  m_Material: {fileID: 13400000, guid: a0c433e46ba6ec840a6918176ab19fd8, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -908,7 +910,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.27
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1020399812
 MeshRenderer:
@@ -974,10 +976,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 311912670}
   rb: {fileID: 1020399810}
-  maxInitialAngle: 2
+  maxInitialAngle: 1
   moveSpeed: 10
+  speedIncrease: 1
   startX: 0
   startY: 0
+  maxYVelocityChange: 2
 --- !u!1 &1182423160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1155,6 +1159,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1037876625743895289, guid: 55f16de4177767e4c9164e7bd0777ebf, type: 3}
   m_PrefabInstance: {fileID: 8215985994809579233}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1679014476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4627268005588642635, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
+  m_PrefabInstance: {fileID: 2056803661}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1679014481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679014476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41cd02bc01aa9a94eb9fa1c84dad0bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  mainCamera: {fileID: 963194227}
+  miny: 0
+  maxy: 0
 --- !u!1 &1873111219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,9 +1322,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 964409705}
     m_Modifications:
+    - target: {fileID: -225693965549884860, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: cfc68ca7809e4e14f858de15082ad853, type: 2}
     - target: {fileID: 4627268005588642635, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
       propertyPath: m_Name
       value: Paddle2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627268005588642635, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
+      propertyPath: m_TagString
+      value: RightPaddle
       objectReference: {fileID: 0}
     - target: {fileID: 6388214324735766685, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
       propertyPath: m_AngularDrag
@@ -1310,8 +1343,16 @@ PrefabInstance:
       value: 122
       objectReference: {fileID: 0}
     - target: {fileID: 6388214324735766685, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
+      propertyPath: m_Interpolate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388214324735766685, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
       propertyPath: m_IsKinematic
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388214324735766685, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6706781795881947947, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1356,7 +1397,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4627268005588642635, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1679014481}
   m_SourcePrefab: {fileID: 100100000, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
 --- !u!1001 &2638016330568130803
 PrefabInstance:
@@ -1376,11 +1420,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -225693965549884860, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
       propertyPath: m_ProvidesContacts
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4627268005588642635, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
       propertyPath: m_Name
       value: Paddle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627268005588642635, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
+      propertyPath: m_TagString
+      value: LeftPaddle
       objectReference: {fileID: 0}
     - target: {fileID: 6388214324735766685, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
       propertyPath: m_AngularDrag
@@ -1391,8 +1439,16 @@ PrefabInstance:
       value: 122
       objectReference: {fileID: 0}
     - target: {fileID: 6388214324735766685, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
+      propertyPath: m_Interpolate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388214324735766685, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
       propertyPath: m_IsKinematic
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388214324735766685, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6706781795881947947, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
       propertyPath: m_LocalPosition.x
