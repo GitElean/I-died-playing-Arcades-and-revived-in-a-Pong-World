@@ -250,7 +250,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106656525}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!4 &184508502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6706781795881947947, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
@@ -475,11 +475,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6706781795881947947, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
   m_PrefabInstance: {fileID: 2638016330568130803}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &392573668 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 6388214324735766685, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
-  m_PrefabInstance: {fileID: 2638016330568130803}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &392573672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,8 +487,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41cd02bc01aa9a94eb9fa1c84dad0bd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 392573668}
   moveSpeed: 3
+  mainCamera: {fileID: 963194227}
 --- !u!4 &588922026 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1037876625743895289, guid: 55f16de4177767e4c9164e7bd0777ebf, type: 3}
@@ -892,7 +887,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!135 &1020399811
 SphereCollider:
@@ -980,10 +975,9 @@ MonoBehaviour:
   gameManager: {fileID: 311912670}
   rb: {fileID: 1020399810}
   maxInitialAngle: 2
-  moveSpeed: 5
+  moveSpeed: 10
   startX: 0
   startY: 0
-  startZ: 0
 --- !u!1 &1182423160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,6 +1302,10 @@ PrefabInstance:
       value: Paddle2
       objectReference: {fileID: 0}
     - target: {fileID: 6388214324735766685, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388214324735766685, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
       propertyPath: m_Constraints
       value: 122
       objectReference: {fileID: 0}
@@ -1372,6 +1370,14 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: cfc68ca7809e4e14f858de15082ad853, type: 2}
+    - target: {fileID: -225693965549884860, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -225693965549884860, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4627268005588642635, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
       propertyPath: m_Name
       value: Paddle
@@ -1386,7 +1392,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6388214324735766685, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6706781795881947947, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
       propertyPath: m_LocalPosition.x

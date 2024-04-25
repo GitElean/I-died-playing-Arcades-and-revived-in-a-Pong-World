@@ -7,10 +7,10 @@ public class ballScript : MonoBehaviour
     public GameManager gameManager;
     public Rigidbody rb;
     public float maxInitialAngle = 0.87f;
-    public float moveSpeed = 2.0f;
+    public float moveSpeed = 0f;
     public float startX = 0f;
     public float startY = 2f;
-    public float startZ = 0f;
+ 
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +27,8 @@ public class ballScript : MonoBehaviour
     private void resetBallPosition()
     {
         float posY = Random.Range(-startY, startY);
-        Vector3 position = new Vector3(startX, posY, startZ);
-
+        Vector3 position = new Vector3(startX, posY, 14.75f);
+        Debug.Log("Asignando nueva posición de la pelota: " + position);
         transform.position = position;
     }
 
