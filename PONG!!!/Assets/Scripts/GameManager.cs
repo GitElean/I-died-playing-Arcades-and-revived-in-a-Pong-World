@@ -13,11 +13,22 @@ public class GameManager : MonoBehaviour
 
     public event EventHandler OnPlayerScoreChanged;
 
+    public GameObject shieldPrefab; // Prefab del escudo
+    public Transform[] shieldSpawnPoints; // Array de puntos de aparición del escudo
+
     private void Start()
     {
         // Asegúrate de que el texto de resultado esté desactivado al inicio
         resultText.gameObject.SetActive(false);
 
+        // Suscribirse al evento de cambio de puntaje
+        OnPlayerScoreChanged += HandlePlayerScoreChanged;
+    }
+
+    private void OnDestroy()
+    {
+        // Desuscribirse del evento al destruirse
+        OnPlayerScoreChanged -= HandlePlayerScoreChanged;
     }
 
     public void OnScoreZoneReached(int id)
@@ -61,5 +72,19 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0; // Pausa el juego
     }
 
- 
+    private void HandlePlayerScoreChanged(object sender, EventArgs e)
+    {
+        if (scorePlayer == 6)
+        {
+            InvokeShields();
+        }
+    }
+
+    private void InvokeShields()
+    {
+        foreach (Transform spawnPoint in shieldSpawnPoints)
+        {
+            Instantiate(shieldPrefab, spawnPoint.position, Quaternion.identity);
+        }
+    }
 }
