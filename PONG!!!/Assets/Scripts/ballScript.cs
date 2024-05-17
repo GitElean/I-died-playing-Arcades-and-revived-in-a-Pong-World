@@ -3,36 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ballScript : MonoBehaviour
-{   
+{
     public GameManager gameManager;
     public Rigidbody rb;
     public float maxInitialAngle = 0.87f;
     public float moveSpeed = 0f;
-    public float speedIncrease = 1f; 
+    public float speedIncrease = 1f; // Incremento de velocidad al colisionar con un paddle
     public float startX = 0f;
     public float startY = 2f;
     private string lastHitPaddleTag = null;
-    
+
     private float lastHitTime = 0f;
     private float hitCooldown = 0.1f;
 
     public float maxYVelocityChange = 330023423f;
 
-    //cosas pal parry
+    // Variable pública para habilitar/deshabilitar la habilidad de cambio de dirección
+    public bool isYDirectionChangeEnabled = false;
+
+    // Cosas para el parry
     private bool isParryActive = false;
     private float parrySpeedMultiplier = 2f; // Multiplicador de velocidad durante el parry
     private bool canParry = false; // Indica si el jugador puede intentar un parry
 
     private Renderer renderer;
+
     // Start is called before the first frame update
     void Start()
     {
         initialPush();
         renderer = GetComponent<Renderer>();
-
     }
 
-    private void initialPush(){
+    private void initialPush()
+    {
         float initialAngle = Random.Range(-maxInitialAngle, maxInitialAngle);
         int xDir = Random.value < 0.5f ? 1 : -1;
         Vector3 direction = new Vector3(xDir, initialAngle, 0);
@@ -80,6 +84,9 @@ public class ballScript : MonoBehaviour
             currentVelocity.x = -1.05f * currentVelocity.x;
             currentVelocity.y += deltaYVelocity;
 
+            // Increase the speed of the ball
+            currentVelocity *= (1 + speedIncrease);
+
             // Apply the calculated velocity to the ball
             rb.velocity = currentVelocity;
 
@@ -123,6 +130,13 @@ public class ballScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Invert Y direction when Q is pressed and the ability is enabled
+        if (isYDirectionChangeEnabled && Input.GetKeyDown(KeyCode.Q))
+        {
+            Vector3 currentVelocity = rb.velocity;
+            currentVelocity.y = -currentVelocity.y;
+            rb.velocity = currentVelocity;
+            Debug.Log("Y direction inverted: " + rb.velocity);
+        }
     }
 }
