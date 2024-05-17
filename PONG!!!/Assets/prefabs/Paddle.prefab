@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7255076811523158686}
   - component: {fileID: 6388214324735766685}
   - component: {fileID: -225693965549884860}
+  - component: {fileID: 4336934466157072475}
   m_Layer: 0
   m_Name: Paddle
   m_TagString: Untagged
@@ -133,3 +134,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4336934466157072475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4627268005588642635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30cc21a277bc16c4e991a827c78af7de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

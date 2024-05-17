@@ -1,24 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; // Necesario para trabajar con elementos UI
+using System; // Necesario para usar el tipo EventHandler
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public int scorePlayer, scoreRival;
-    public ScoreText playerScoreText, rivalScoreText; // Corregido: Añadido el punto y coma
+    public ScoreText playerScoreText, rivalScoreText;
+    public TextMeshProUGUI resultText;
 
-    // Corregido: Eliminado el punto y coma después de la definición del parámetro
+    public event EventHandler OnPlayerScoreChanged;
+
+    private void Start()
+    {
+        // Asegúrate de que el texto de resultado esté desactivado al inicio
+        resultText.gameObject.SetActive(false);
+
+    }
+
     public void OnScoreZoneReached(int id)
     {
         if (id == 1)
+        {
             scorePlayer++;
-
-        if (id == 2)
+            OnPlayerScoreChanged?.Invoke(this, EventArgs.Empty); // Disparar el evento
+        }
+        else if (id == 2)
+        {
             scoreRival++;
+        }
 
         UpdateScores();
-        //gameUI.HighlightScore(id);
-        //CheckWin();
+        CheckWinCondition();
     }
 
     public void UpdateScores()
@@ -26,4 +41,25 @@ public class GameManager : MonoBehaviour
         playerScoreText.SetScore(scorePlayer);
         rivalScoreText.SetScore(scoreRival);
     }
+
+    private void CheckWinCondition()
+    {
+        if (scorePlayer >= 11)
+        {
+            ShowEndGame("You Win");
+        }
+        else if (scoreRival >= 11)
+        {
+            ShowEndGame("You Lose");
+        }
+    }
+
+    private void ShowEndGame(string message)
+    {
+        resultText.text = message; // Establece el mensaje de victoria o derrota
+        resultText.gameObject.SetActive(true); // Muestra el texto
+        Time.timeScale = 0; // Pausa el juego
+    }
+
+ 
 }
