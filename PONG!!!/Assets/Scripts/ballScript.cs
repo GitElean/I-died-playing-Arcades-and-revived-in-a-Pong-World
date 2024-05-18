@@ -28,6 +28,11 @@ public class ballScript : MonoBehaviour
 
     private Renderer renderer;
 
+    // Variables para la habilidad de lanzar la pelota en X
+    public bool isLaunchXEnabled = false; // Habilitar/deshabilitar la habilidad de lanzamiento en X
+    public int maxLaunchXUses = 3; // Máximo de usos permitidos
+    private int currentLaunchXUses = 0; // Contador de usos actuales
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +62,7 @@ public class ballScript : MonoBehaviour
         resetBallPosition();
         initialPush();
         ResetParry();
+        currentLaunchXUses = 0; // Resetear el contador de usos al reiniciar la pelota
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -137,6 +143,17 @@ public class ballScript : MonoBehaviour
             currentVelocity.y = -currentVelocity.y;
             rb.velocity = currentVelocity;
             Debug.Log("Y direction inverted: " + rb.velocity);
+        }
+
+        // Launch ball in X direction when E is pressed and the ability is enabled
+        if (isLaunchXEnabled && Input.GetKeyDown(KeyCode.E) && currentLaunchXUses < maxLaunchXUses)
+        {
+            Vector3 currentVelocity = rb.velocity;
+            currentVelocity.y = 0; // Set Y velocity to 0
+            currentVelocity.x = Mathf.Sign(currentVelocity.x) * moveSpeed; // Ensure the ball moves in the X direction at moveSpeed
+            rb.velocity = currentVelocity;
+            currentLaunchXUses++;
+            Debug.Log("Ball launched in X direction: " + rb.velocity + " | Uses left: " + (maxLaunchXUses - currentLaunchXUses));
         }
     }
 }
