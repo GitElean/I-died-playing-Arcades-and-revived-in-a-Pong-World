@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> destroyers; // Lista de objetos que pueden destruir muros
 
     public DestructibleObject destructibleWall; // Referencia al muro destructible
+    public bool enableWallRegeneration = true; // Variable para habilitar/deshabilitar la regeneración del muro
 
     private void Start()
     {
@@ -78,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     private void HandlePlayerScoreChanged(object sender, EventArgs e)
     {
-        if (scorePlayer == 3 || scorePlayer == 6 || scorePlayer == 9)
+        if (enableWallRegeneration && (scorePlayer == 3 || scorePlayer == 6 || scorePlayer == 9))
         {
             destructibleWall.Regenerate();
         }

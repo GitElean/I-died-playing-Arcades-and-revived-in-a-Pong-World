@@ -294,6 +294,9 @@ MonoBehaviour:
   shieldSpawnPoints:
   - {fileID: 744998897}
   - {fileID: 1730589942}
+  destroyers: []
+  destructibleWall: {fileID: 0}
+  enableWallRegeneration: 0
 --- !u!4 &311912671
 Transform:
   m_ObjectHideFlags: 0
