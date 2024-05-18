@@ -201,6 +201,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1182423161}
     m_Modifications:
+    - target: {fileID: 1881034951918650039, guid: 7313f69225d5af84cb5653331ef56e85, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4980022664718638118, guid: 7313f69225d5af84cb5653331ef56e85, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.06
@@ -252,6 +256,10 @@ PrefabInstance:
     - target: {fileID: 8583973837198643049, guid: 7313f69225d5af84cb5653331ef56e85, type: 3}
       propertyPath: m_Name
       value: GreatWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8583973837198643049, guid: 7313f69225d5af84cb5653331ef56e85, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
