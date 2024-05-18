@@ -290,6 +290,11 @@ MonoBehaviour:
   playerScoreText: {fileID: 3595431192798159413}
   rivalScoreText: {fileID: 945566859}
   resultText: {fileID: 1776858896}
+  shieldPrefab: {fileID: 456248909413797049, guid: 2f6cb52410069d247a6f171f3bc82625, type: 3}
+  shieldSpawnPoints: []
+  destroyers: []
+  destructibleWall: {fileID: 0}
+  enableWallRegeneration: 0
 --- !u!4 &311912671
 Transform:
   m_ObjectHideFlags: 0
@@ -983,6 +988,9 @@ MonoBehaviour:
   startX: 0
   startY: 0
   maxYVelocityChange: 2
+  isYDirectionChangeEnabled: 0
+  isLaunchXEnabled: 0
+  maxLaunchXUses: 3
 --- !u!1 &1182423160
 GameObject:
   m_ObjectHideFlags: 0

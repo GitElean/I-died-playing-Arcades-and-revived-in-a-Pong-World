@@ -14,15 +14,16 @@ public class GameManager : MonoBehaviour
     public event EventHandler OnPlayerScoreChanged;
 
     public GameObject shieldPrefab; // Prefab del escudo
-    public Transform[] shieldSpawnPoints; // Array de puntos de aparición del escudo
+    public Transform[] shieldSpawnPoints; // Array de puntos de apariciÃ³n del escudo
 
     public List<GameObject> destroyers; // Lista de objetos que pueden destruir muros
 
     public DestructibleObject destructibleWall; // Referencia al muro destructible
+    public bool enableWallRegeneration = true; // Variable para habilitar/deshabilitar la regeneraciÃ³n del muro
 
     private void Start()
     {
-        // Asegúrate de que el texto de resultado esté desactivado al inicio
+        // AsegÃºrate de que el texto de resultado estÃ© desactivado al inicio
         resultText.gameObject.SetActive(false);
 
         // Suscribirse al evento de cambio de puntaje
@@ -78,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     private void HandlePlayerScoreChanged(object sender, EventArgs e)
     {
-        if (scorePlayer == 3 || scorePlayer == 6 || scorePlayer == 9)
+        if (enableWallRegeneration && (scorePlayer == 3 || scorePlayer == 6 || scorePlayer == 9))
         {
             destructibleWall.Regenerate();
         }
