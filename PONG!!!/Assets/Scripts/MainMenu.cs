@@ -16,7 +16,7 @@ public class MainMenuScript : MonoBehaviour
     private int currentIndex = 0; // Índice del botón actualmente seleccionado
     private List<Button> currentButtons;
     public Color selectedColor = Color.yellow; // Color para el botón seleccionado
-    public Color defaultColor = Color.white;
+    public Color defaultColor = Color.black;
 
     void Start()
     {
