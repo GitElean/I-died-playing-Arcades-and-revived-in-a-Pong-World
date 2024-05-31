@@ -7,6 +7,8 @@ TagManager:
   - Paddle
   - LeftPaddle
   - RightPaddle
+  - Projectile
+  - Ball
   layers:
   - Default
   - TransparentFX

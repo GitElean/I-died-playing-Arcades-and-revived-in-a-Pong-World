@@ -33,8 +33,7 @@ public class ballScript : MonoBehaviour
     public int maxLaunchXUses = 3; // Máximo de usos permitidos
     private int currentLaunchXUses = 0; // Contador de usos actuales
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         initialPush();
         renderer = GetComponent<Renderer>();
@@ -46,14 +45,12 @@ public class ballScript : MonoBehaviour
         int xDir = Random.value < 0.5f ? 1 : -1;
         Vector3 direction = new Vector3(xDir, initialAngle, 0);
         rb.velocity = direction * moveSpeed;
-        Debug.Log("Initial push: " + rb.velocity);
     }
 
     private void resetBallPosition()
     {
         float posY = Random.Range(-startY, startY);
         Vector3 position = new Vector3(startX, posY, 14.75f);
-        Debug.Log("Asignando nueva posición de la pelota: " + position);
         transform.position = position;
     }
 

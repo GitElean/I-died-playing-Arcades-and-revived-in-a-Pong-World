@@ -984,7 +984,7 @@ MonoBehaviour:
   rb: {fileID: 1020399810}
   maxInitialAngle: 1
   moveSpeed: 10
-  speedIncrease: 5
+  speedIncrease: 0.1
   startX: 0
   startY: 0
   maxYVelocityChange: 2

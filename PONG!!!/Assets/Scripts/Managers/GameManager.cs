@@ -84,7 +84,8 @@ public class GameManager : MonoBehaviour
             destructibleWall.Regenerate();
         }
 
-        if (scorePlayer >= 6){
+        if (scorePlayer >= 5)
+        {
             InvokeShields();
         }
     }

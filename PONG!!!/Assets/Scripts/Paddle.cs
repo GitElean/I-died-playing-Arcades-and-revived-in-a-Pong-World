@@ -6,10 +6,25 @@ public class Paddle : MonoBehaviour
 {
     public float moveSpeed = 3f;
     public Camera mainCamera; // Asegúrate de asignar la cámara principal en el inspector
-    public float miny =0;
-    public float maxy =0;
+    public float miny = 0;
+    public float maxy = 0;
+
+    private bool isImmobilized = false;
+    private bool isInvulnerable = false;
+    private float immobilizeEndTime = 0f;
+    private float invulnerabilityEndTime = 0f;
+
     private void Update() // Usa Update para obtener el input del mouse
     {
+        HandleMovement();
+        HandleTimers();
+    }
+
+    private void HandleMovement()
+    {
+        if (isImmobilized)
+            return;
+
         MoveWithMouse();
     }
 
@@ -25,4 +40,33 @@ public class Paddle : MonoBehaviour
         transform.position = new Vector3(transform.position.x, limitedY, transform.position.z);
     }
 
+    private void HandleTimers()
+    {
+        if (isImmobilized && Time.time >= immobilizeEndTime)
+        {
+            isImmobilized = false;
+        }
+
+        if (isInvulnerable && Time.time >= invulnerabilityEndTime)
+        {
+            isInvulnerable = false;
+        }
+    }
+
+    public void Immobilize(float duration)
+    {
+        isImmobilized = true;
+        immobilizeEndTime = Time.time + duration;
+    }
+
+    public void SetInvulnerability(float duration)
+    {
+        isInvulnerable = true;
+        invulnerabilityEndTime = Time.time + duration;
+    }
+
+    public bool IsInvulnerable
+    {
+        get { return isInvulnerable; }
+    }
 }

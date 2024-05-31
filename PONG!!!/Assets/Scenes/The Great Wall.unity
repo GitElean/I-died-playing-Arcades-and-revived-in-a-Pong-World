@@ -245,6 +245,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6866325429229027079, guid: 7313f69225d5af84cb5653331ef56e85, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8467065472302647826, guid: 7313f69225d5af84cb5653331ef56e85, type: 3}
       propertyPath: hitPoints
       value: 3
@@ -369,7 +373,7 @@ MonoBehaviour:
   - {fileID: 1730589942}
   destroyers:
   - {fileID: 1156932558}
-  destructibleWall: {fileID: 8467065472302647826, guid: 7313f69225d5af84cb5653331ef56e85, type: 3}
+  destructibleWall: {fileID: 1751923926}
   enableWallRegeneration: 1
 --- !u!4 &311912671
 Transform:
@@ -571,8 +575,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   mainCamera: {fileID: 963194227}
-  miny: 0
-  maxy: 0
+  miny: -6.2
+  maxy: 9
 --- !u!4 &588922026 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1037876625743895289, guid: 55f16de4177767e4c9164e7bd0777ebf, type: 3}
@@ -1169,27 +1173,42 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1037876625743895289, guid: 55f16de4177767e4c9164e7bd0777ebf, type: 3}
   m_PrefabInstance: {fileID: 8215985994809579233}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1559386772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1559386773}
+  m_Layer: 0
+  m_Name: Firepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1559386773
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559386772}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 184508502}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &1679014476 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4627268005588642635, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
   m_PrefabInstance: {fileID: 2056803661}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1679014481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1679014476}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41cd02bc01aa9a94eb9fa1c84dad0bd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 3
-  mainCamera: {fileID: 963194227}
-  miny: 0
-  maxy: 0
 --- !u!114 &1679014486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1206,7 +1225,7 @@ MonoBehaviour:
   speedIncreasePerPoint: 40
   upperBound: 9
   lowerBound: -6.5
---- !u!114 &1679014492
+--- !u!114 &1679014498
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1215,11 +1234,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1679014476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 384d88f5f9057bd468205fd4bda3b2cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 63a39ca0da11f0c4885d510bea4bee0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 1020399809}
-  moveSpeed: 10
+  moveSpeed: 12.5
+  projectilePrefab: {fileID: 1945475696099696293, guid: 4a11ec03e8cc9a94189c24d08adb777e, type: 3}
+  firePoint: {fileID: 1559386773}
+  fireRate: 0.1
+  projectileSpeed: 1000
 --- !u!1 &1730589941
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,6 +1274,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1197708037}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1751923926 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8467065472302647826, guid: 7313f69225d5af84cb5653331ef56e85, type: 3}
+  m_PrefabInstance: {fileID: 32164455}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9a5296bc6b17e40abf92e41a469b18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1776858895
 GameObject:
   m_ObjectHideFlags: 0
@@ -1601,17 +1635,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4627268005588642635, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6706781795881947947, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1679014481}
+      addedObject: {fileID: 1559386773}
+    m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4627268005588642635, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1679014486}
     - targetCorrespondingSourceObject: {fileID: 4627268005588642635, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1679014492}
+      addedObject: {fileID: 1679014498}
   m_SourcePrefab: {fileID: 100100000, guid: 8aeedcd148045664bb9d1cf57f8a6c25, type: 3}
 --- !u!1001 &2638016330568130803
 PrefabInstance:
@@ -1940,19 +1974,31 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1418604168931759883, guid: 10a6d844e7154b64c9aa0253179b3d54, type: 3}
+      propertyPath: parrySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 34d55b97a7be87746ad459c133c3bc2d, type: 3}
+    - target: {fileID: 1418604168931759883, guid: 10a6d844e7154b64c9aa0253179b3d54, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 311912670}
     - target: {fileID: 1418604168931759883, guid: 10a6d844e7154b64c9aa0253179b3d54, type: 3}
       propertyPath: speedIncrease
-      value: 0.25
+      value: 0.16
       objectReference: {fileID: 0}
+    - target: {fileID: 1418604168931759883, guid: 10a6d844e7154b64c9aa0253179b3d54, type: 3}
+      propertyPath: paddleHitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 584c2bec24fe1ae43aeb146434a2e885, type: 3}
     - target: {fileID: 1418604168931759883, guid: 10a6d844e7154b64c9aa0253179b3d54, type: 3}
       propertyPath: isLaunchXEnabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8768916011860151729, guid: 10a6d844e7154b64c9aa0253179b3d54, type: 3}
       propertyPath: m_Name
+      value: Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768916011860151729, guid: 10a6d844e7154b64c9aa0253179b3d54, type: 3}
+      propertyPath: m_TagString
       value: Ball
       objectReference: {fileID: 0}
     m_RemovedComponents: []
